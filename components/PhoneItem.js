@@ -76,8 +76,11 @@ const PhoneItem = ({
             </Link>
           ) : (
             <>
+              {/* hot.gif */}
               <Heading size="sm">{name}</Heading>
-              {isHot ? <Image src="hot.gif" ml="1" width="30px" /> : null}
+              {isHot ? (
+                <Image src="https://gph.is/st/EpWzVym" ml="1" width="30px" />
+              ) : null}
             </>
           )}
           {price ? (

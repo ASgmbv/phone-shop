@@ -1,4 +1,4 @@
-import { Heading, Container, Flex } from "@chakra-ui/core";
+import { Heading, Container, Flex, Image } from "@chakra-ui/core";
 
 const Hero = ({ title, subtitle, hero }) => {
   return (
@@ -36,6 +36,10 @@ const Hero = ({ title, subtitle, hero }) => {
         >
           {subtitle}
         </Heading>
+        <Image
+          src="https://media.giphy.com/media/2gMn4lAKEzVQ58oOlS/giphy.gif"
+          boxSize="60px"
+        />
       </Flex>
     </Container>
   );
