@@ -46,10 +46,17 @@ const PhoneItem = ({
   const [show, setShow] = useState(false);
 
   return (
-    <Box py="10" _hover={{ bg: "#f9f9f9" }} {...otherProps}>
+    <Box
+      py="10"
+      _hover={{ bg: "#f9f9f9" }}
+      boxShadow={[null, "lg"]}
+      borderWidth={[null, "1px"]}
+      borderRadius={[null, "lg"]}
+      {...otherProps}
+    >
       <Flex>
         <Flex width="130px" flexDir="column">
-          <Image src={image} boxSize="130px" objectFit="cover" />
+          <Image src={image} boxSize="130px" objectFit="cover" alt={name} />
           {colors.length === 0 ? null : (
             <Wrap px="4" py="2" justify="center">
               {colors.map((color, index) => (
@@ -106,7 +113,7 @@ const PhoneItem = ({
             onClick={() => {
               setShow(!show);
             }}
-            variant="ghost"
+            variant="link"
             colorScheme="black"
             fontSize="sm"
             rightIcon={show ? <ArrowUpIcon /> : <ArrowDownIcon />}
