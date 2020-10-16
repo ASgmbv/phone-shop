@@ -131,8 +131,9 @@ const PhoneItem = ({
           href={`https://api.whatsapp.com/send?phone=905525164080&text=${name} telefonu sipariş vermek istiyorum.`}
           target="_blank"
           rel="noopener noreferrer"
-          width="100%"
+          width="80%"
           colorScheme="whatsapp"
+          mx="auto"
         >
           Sipariş Ver
         </Button>
