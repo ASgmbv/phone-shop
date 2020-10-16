@@ -1,65 +1,67 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import {
+  Heading,
+  Container,
+  Divider,
+  Stack,
+  StackDivider,
+  Box,
+} from "@chakra-ui/core";
+import PhoneItem from "../components/PhoneItem";
+import { Client } from "../prismic-configuration";
+import Prismic from "prismic-javascript";
+import { RichText } from "prismic-reactjs";
 
-export default function Home() {
+export default function Home({ phones }) {
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+    <Box bg="#F3F3F3">
+      <Container bg="white">
+        <Heading as="h1">Phones</Heading>
+        <Divider mt="20px" />
+        {/* <pre>{JSON.stringify(phones, null, 2)}</pre> */}
+        <Stack
+          divider={<StackDivider style={{ marginBottom: 0, marginTop: 0 }} />}
         >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
-  )
+          {phones.map(({ data, id }) => {
+            const temp = {
+              name: RichText.asText(data.name),
+              externalUrl: data.externallink.url,
+              price: data.price,
+              image: data.image.url,
+              memory: data.memory.map((item) =>
+                RichText.asText(item.memoryitem)
+              ),
+              cpu: RichText.asText(data.cpu),
+              screen: RichText.asText(data.screen),
+              camera: data.camera.map((item) =>
+                RichText.asText(item.cameraitem)
+              ),
+              frontalCamera: RichText.asText(data.frontalCamera),
+              slots: data.slots.map((item) => RichText.asText(item.slot)),
+              battery: RichText.asText(data.frontalCamera),
+              width: data.width,
+              height: data.height,
+              weight: data.weight,
+              colors: data.colors.map((item) => item.color),
+              isHot: data.ishot,
+            };
+
+            return <PhoneItem key={id} {...temp} />;
+          })}
+        </Stack>
+      </Container>
+    </Box>
+  );
+}
+
+export async function getStaticProps() {
+  const phones = await Client().query(
+    Prismic.Predicates.at("document.type", "phone")
+  );
+
+  return {
+    props: {
+      phones: phones ? phones.results : [],
+    },
+    revalidate: 1,
+  };
 }
