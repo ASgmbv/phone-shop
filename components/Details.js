@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from "react";
-import { Container, Heading, Wrap, WrapItem, Box } from "@chakra-ui/core";
+import { Container, Heading, Wrap, WrapItem } from "@chakra-ui/core";
 import Feature from "./Feature";
 import { RichText } from "prismic-reactjs";
 
@@ -28,12 +28,13 @@ const Details = ({ featuresTitle, features }) => {
       >
         {features.map((feature, index) => {
           return (
-            <Feature
-              key={"feature-" + index}
-              image={feature.feature_image.url}
-              title={RichText.asText(feature.feature_title)}
-              description={RichText.asText(feature.feature_description)}
-            />
+            <WrapItem key={"feature-" + index}>
+              <Feature
+                image={feature.feature_image.url}
+                title={RichText.asText(feature.feature_title)}
+                description={RichText.asText(feature.feature_description)}
+              />
+            </WrapItem>
           );
         })}
       </Wrap>

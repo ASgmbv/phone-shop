@@ -1,14 +1,14 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/react-in-jsx-scope */
-import { Heading, Container, Divider, Box } from "@chakra-ui/core";
+import { Box } from "@chakra-ui/core";
 import PhonesList from "../components/PhonesList";
 import { Client } from "../prismic-configuration";
 import Prismic from "prismic-javascript";
-import { RichText } from "prismic-reactjs";
-import Hero from "../components/Hero";
-import BlogPosts from "../components/BlogPosts";
+// import { RichText } from "prismic-reactjs";
+// import Hero from "../components/Hero";
+// import BlogPosts from "../components/BlogPosts";
 import Slider from "../components/Slider";
-import Layout from "../components/Layout";
+// import Layout from "../components/Layout";
 import Header from "../components/Header";
 import Details from "../components/Details";
 
