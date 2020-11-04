@@ -1,5 +1,19 @@
 import Prismic from "prismic-javascript";
 
+export const linkResolver = (doc) => {
+  if (doc.type === "blog_post") {
+    return `/blog/${doc.uid}`;
+  }
+  return "/";
+};
+
+export const hrefResolver = (doc) => {
+  if (doc.type === "blog_post") {
+    return "/blog/[uid]";
+  }
+  return "/";
+};
+
 // Client method to query documents from the Prismic repo
 export const Client = (req = null) =>
   Prismic.client(
