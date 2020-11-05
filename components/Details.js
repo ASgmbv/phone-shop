@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from "react";
-import { Container, Heading, Wrap, WrapItem } from "@chakra-ui/core";
+import { Container, Heading, Wrap, WrapItem, SlideFade } from "@chakra-ui/core";
 import Feature from "./Feature";
 import { RichText } from "prismic-reactjs";
 
@@ -16,28 +16,30 @@ const Details = ({ featuresTitle, features }) => {
       >
         {title}
       </Heading>
-      <Wrap
-        mt="24"
-        width="100%"
-        spacing="10"
-        sx={{
-          li: {
-            flex: 1,
-          },
-        }}
-      >
-        {features.map((feature, index) => {
-          return (
-            <WrapItem key={"feature-" + index}>
-              <Feature
-                image={feature.feature_image.url}
-                title={RichText.asText(feature.feature_title)}
-                description={RichText.asText(feature.feature_description)}
-              />
-            </WrapItem>
-          );
-        })}
-      </Wrap>
+      <SlideFade in={true}>
+        <Wrap
+          mt="24"
+          width="100%"
+          spacing="10"
+          sx={{
+            li: {
+              flex: 1,
+            },
+          }}
+        >
+          {features.map((feature, index) => {
+            return (
+              <WrapItem key={"feature-" + index} justifyContent="center">
+                <Feature
+                  image={feature.feature_image.url}
+                  title={RichText.asText(feature.feature_title)}
+                  description={RichText.asText(feature.feature_description)}
+                />
+              </WrapItem>
+            );
+          })}
+        </Wrap>
+      </SlideFade>
     </Container>
   );
 };

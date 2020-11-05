@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react/react-in-jsx-scope */
 import {
   Box,
   Flex,
@@ -136,6 +138,7 @@ const PhoneItem = ({
           rel="noopener noreferrer"
           width="80%"
           colorScheme="whatsapp"
+          // bg="black"
           mx="auto"
         >
           Sipariş Ver
