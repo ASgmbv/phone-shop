@@ -43,7 +43,7 @@ const Post = ({ post = {} }) => {
             {title}
           </Heading>
           <Text mb="2" color="gray.500">
-            {post.lastPublicationDate.substring(0, 10)}
+            {post.lastPublicationDate?.substring(0, 10) || ""}
           </Text>
           <SliceZone sliceZone={post.body} />
         </Container>
