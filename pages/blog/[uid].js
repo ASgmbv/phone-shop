@@ -32,7 +32,7 @@ export async function getStaticProps({ params }) {
 
 const Post = ({ post = {} }) => {
   let title = RichText.asText(post.title || []);
-  console.dir({ post }, { depth: null });
+  // console.dir({ post }, { depth: null });
 
   return (
     <>
