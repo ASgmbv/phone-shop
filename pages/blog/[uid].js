@@ -1,16 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from "react";
 import { RichText } from "prismic-reactjs";
-import {
-  Box,
-  Container,
-  Link as ChakraLink,
-  Flex,
-  Text,
-  Image,
-  Heading,
-} from "@chakra-ui/react";
-import Link from "next/link";
+import { Box, Container, Text, Image, Heading } from "@chakra-ui/react";
 import Header from "../../components/Header";
 import { queryBlogPosts, queryPostByUid } from "../../utils/prismicQueries";
 import { format } from "date-fns";
@@ -41,7 +32,7 @@ export async function getStaticProps({ params }) {
 
 const Post = ({ post = {} }) => {
   let title = RichText.asText(post.title || []);
-  // console.dir({ post }, { depth: null });
+  console.dir({ post }, { depth: null });
 
   return (
     <>
@@ -52,7 +43,7 @@ const Post = ({ post = {} }) => {
             {title}
           </Heading>
           <Text mb="2" color="gray.500">
-            {format(new Date(post.lastPublicationDate), "dd/MM/yyyy")}
+            {post.lastPublicationDate.substring(0, 10)}
           </Text>
           <SliceZone sliceZone={post.body} />
         </Container>

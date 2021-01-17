@@ -4,7 +4,7 @@ import React from "react";
 import NextLink from "next/link";
 
 const Banner = ({ mainPage = {} }) => {
-  console.log({ mainPage });
+  // console.log({ mainPage });
 
   return (
     <Container maxW="7xl" bg="white" my={[4, null, 8]}>
