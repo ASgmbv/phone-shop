@@ -12,7 +12,7 @@ import {
   Collapse,
   Button,
   Divider,
-} from "@chakra-ui/core";
+} from "@chakra-ui/react";
 import { useState } from "react";
 import { ArrowDownIcon, ArrowUpIcon, ExternalLinkIcon } from "@chakra-ui/icons";
 
@@ -47,15 +47,17 @@ const PhoneItem = ({
 }) => {
   const [show, setShow] = useState(false);
 
+  console.log({ show });
+
   return (
     <Box
       py="10"
       _hover={{ bg: "#f9f9f9" }}
-      boxShadow={[null, "lg"]}
-      borderWidth={[null, "1px"]}
       borderRadius={[null, "lg"]}
+      maxW="400px"
       {...otherProps}
     >
+      <pre>{JSON.stringify()}</pre>
       <Flex>
         <Flex width="130px" flexDir="column">
           <Image src={image} boxSize="130px" objectFit="cover" alt={name} />
@@ -78,7 +80,6 @@ const PhoneItem = ({
             </Link>
           ) : (
             <>
-              {/* hot.gif */}
               <Heading size="sm">{name}</Heading>
               {isHot ? (
                 <Image src="https://gph.is/st/EpWzVym" ml="1" width="30px" />
@@ -115,9 +116,7 @@ const PhoneItem = ({
           </Collapse>
           <Divider />
           <Button
-            onClick={() => {
-              setShow(!show);
-            }}
+            onClick={() => setShow((prev) => !prev)}
             variant="link"
             colorScheme="black"
             fontSize="sm"
@@ -138,7 +137,6 @@ const PhoneItem = ({
           rel="noopener noreferrer"
           width="80%"
           colorScheme="whatsapp"
-          // bg="black"
           mx="auto"
         >
           Sipariş Ver

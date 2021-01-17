@@ -1,4 +1,4 @@
-import { extendTheme } from "@chakra-ui/core";
+import { extendTheme } from "@chakra-ui/react";
 
 const customTheme = extendTheme({
   fonts: {
@@ -9,6 +9,7 @@ const customTheme = extendTheme({
     global: (props) => ({
       body: {
         fontFamily: "Inter, sans-serif",
+        backgroundColor: "#F2F2F2",
       },
       ".simage": {
         objectFit: "cover",
@@ -17,7 +18,7 @@ const customTheme = extendTheme({
         p: {
           fontSize: "lg",
           lineHeight: "taller",
-          mb: "6",
+          mb: "3",
         },
         h1: {
           mt: "2rem",

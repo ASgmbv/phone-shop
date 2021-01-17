@@ -7,57 +7,78 @@ import {
   Link as ChakraLink,
   Flex,
   Text,
+  Image,
   Heading,
-} from "@chakra-ui/core";
+} from "@chakra-ui/react";
 import Link from "next/link";
-import Image from "next/image";
-import { Client } from "../../prismic-configuration";
-import Prismic from "prismic-javascript";
 import Header from "../../components/Header";
+import { queryBlogPosts, queryPostByUid } from "../../utils/prismicQueries";
+import { format } from "date-fns";
 
-const Post = ({ post }) => {
-  if (!post || !post.data) {
-    return null;
-  }
+export async function getStaticPaths() {
+  const posts = await queryBlogPosts();
 
-  let title = RichText.asText(post.data.title);
+  const paths = posts.map((post) => ({
+    params: { uid: `/blog/${post.slug}` },
+  }));
+
+  return {
+    paths,
+    fallback: true,
+  };
+}
+
+export async function getStaticProps({ params }) {
+  const post = await queryPostByUid({ postUid: params.uid });
+
+  return {
+    props: {
+      post,
+    },
+    revalidate: 1,
+  };
+}
+
+const Post = ({ post = {} }) => {
+  let title = RichText.asText(post.title || []);
+  // console.dir({ post }, { depth: null });
 
   return (
     <>
       <Header />
-      <Container maxW="sm" my="4.5rem">
-        <Link href="/blog">
-          <ChakraLink>
-            <Flex my="30px" alignItems="center">
-              <Text verticalAlign="middle" mt="20px">
-                Blog
-              </Text>
-            </Flex>
-          </ChakraLink>
-        </Link>
-        <Heading as="h1" mb="6">
-          {title}
-        </Heading>
-        <SliceZone sliceZone={post.data.body} />
-      </Container>
+      <Box bg="white" py="10">
+        <Container maxW="2xl">
+          <Heading as="h1" pt="10" pb="4">
+            {title}
+          </Heading>
+          <Text mb="2" color="gray.500">
+            {format(new Date(post.lastPublicationDate), "dd/MM/yyyy")}
+          </Text>
+          <SliceZone sliceZone={post.body} />
+        </Container>
+      </Box>
     </>
   );
 };
 
-const SliceZone = ({ sliceZone }) => (
-  <>
-    {sliceZone.map((slice, index) => {
-      switch (slice.slice_type) {
-        case "image_with_caption":
-          return <ImageWithCaption slice={slice} key={index} />;
-        case "text":
-          return <TextSlice slice={slice} key={index} />;
-        default:
-          return null;
-      }
-    })}
-  </>
-);
+const SliceZone = ({ sliceZone = [] }) => {
+  // console.dir({ sliceZone }, { depth: null });
+
+  return (
+    <>
+      {sliceZone?.map((slice, index) => {
+        switch (slice.slice_type) {
+          case "image":
+            return <ImageWithCaption slice={slice} key={index} />;
+          case "text":
+            return <TextSlice slice={slice} key={index} />;
+          default:
+            return null;
+        }
+      })}
+    </>
+  );
+};
 
 const TextSlice = ({ slice }) => {
   return (
@@ -68,50 +89,17 @@ const TextSlice = ({ slice }) => {
 };
 
 const ImageWithCaption = ({ slice }) => {
-  let caption = slice.primary.image.alt || "Photo";
-  let width = slice.primary.image.dimensions.width || 500;
-  let height = slice.primary.image.dimensions.height || 500;
-  let url = slice.primary.image.url;
+  let url = slice?.primary?.image?.url || "";
+  let alt = slice?.primary?.image?.alt || "";
 
   return (
     <Box my="30px" d="flex" flexDir="column" alignItems="center">
-      <Image
-        alt={caption}
-        src={url}
-        width={width}
-        height={height}
-        className="simage"
-      />
+      <Image alt={alt} src={url} width="100%" objectFit="contain" />
       <Text textAlign="center" color="gray.500" fontStyle="italic">
-        {caption}
+        {alt}
       </Text>
     </Box>
   );
 };
-
-export async function getStaticProps({ params }) {
-  const post = (await Client().getByUID("blog_post", params.uid)) || {};
-
-  return {
-    props: {
-      post,
-    },
-    revalidate: 1,
-  };
-}
-
-export async function getStaticPaths() {
-  const res = await Client().query(
-    Prismic.Predicates.at("document.type", "blog_post"),
-    {
-      orderings: "[document.last_publication_date desc]",
-    }
-  );
-
-  return {
-    paths: res.results.map((doc) => ({ params: { uid: `/blog/${doc.uid}` } })),
-    fallback: true,
-  };
-}
 
 export default Post;

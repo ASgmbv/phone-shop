@@ -7,13 +7,6 @@ export const linkResolver = (doc) => {
   return "/";
 };
 
-export const hrefResolver = (doc) => {
-  if (doc.type === "blog_post") {
-    return "/blog/[uid]";
-  }
-  return "/";
-};
-
 // Client method to query documents from the Prismic repo
 export const Client = (req = null) =>
   Prismic.client(

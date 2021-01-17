@@ -1,6 +1,12 @@
 /* eslint-disable react/prop-types */
 import React from "react";
-import { Container, Heading, Wrap, WrapItem, SlideFade } from "@chakra-ui/core";
+import {
+  Container,
+  Heading,
+  Wrap,
+  WrapItem,
+  SlideFade,
+} from "@chakra-ui/react";
 import Feature from "./Feature";
 import { RichText } from "prismic-reactjs";
 
@@ -10,9 +16,12 @@ const Details = ({ featuresTitle, features }) => {
   return (
     <Container maxW="xl" py="100px">
       <Heading
-        fontSize={["xl", null, "2xl"]}
+        size={["xl"]}
         textAlign="center"
-        fontWeight="500"
+        letterSpacing="2"
+        maxW="600px"
+        letterSpacing="wide"
+        mx="auto"
       >
         {title}
       </Heading>

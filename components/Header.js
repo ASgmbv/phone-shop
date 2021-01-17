@@ -1,42 +1,31 @@
+import { Box, Container, Flex, Link, Text } from "@chakra-ui/react";
+import NextLink from "next/link";
 import React from "react";
-import { Box, Container, Text } from "@chakra-ui/core";
-import Link from "next/link";
 
 const Header = (props) => {
   return (
     <Box
       as="header"
-      pos="fixed"
-      top="0"
-      left="0"
-      right="0"
-      zIndex="1"
-      width="full"
-      borderBottom="1px solid"
-      borderBottomColor="gray.100"
+      width="100%"
+      position="sticky"
+      zIndex="10"
       bg="white"
+      top="0"
+      boxShadow="0 30px 30px rgba(0,0,0,.02), 0 0 8px rgba(0,0,0,.03), 0 1px 0 rgba(0,0,0,.05)"
+      border="0 solid #d2d6dc"
       {...props}
     >
-      <Container
-        maxW="xl"
-        height="4.5rem"
-        mx="auto"
-        d="flex"
-        alignItems="center"
-        justifyContent="space-between"
-      >
-        <Link href="/">
-          <a>
-            <img src="/vercel.svg" width="100px" height="100px" />
-          </a>
-        </Link>
-        <Link href="/blog">
-          <a>
-            <Text as="span" fontWeight="500" fontSize="lg">
-              Blog
-            </Text>
-          </a>
-        </Link>
+      <Container maxW="4xl">
+        <Flex py="5" justifyContent="space-between" alignItems="center">
+          <NextLink href="/" passHref>
+            <Link fontSize="xl" fontWeight="bold">
+              SJ
+            </Link>
+          </NextLink>
+          <NextLink href="/blog" passHref>
+            <Link fontWeight="500">Blog</Link>
+          </NextLink>
+        </Flex>
       </Container>
     </Box>
   );

@@ -1,4 +1,4 @@
-import { Heading, Container, Flex, Image } from "@chakra-ui/core";
+import { Heading, Container, Flex, Image } from "@chakra-ui/react";
 
 const Hero = ({ title, subtitle, hero }) => {
   return (

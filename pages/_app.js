@@ -1,5 +1,8 @@
+/* eslint-disable react/prop-types */
 // import '../styles/globals.css'
-import { ChakraProvider } from "@chakra-ui/core";
+
+import React from "react";
+import { ChakraProvider } from "@chakra-ui/react";
 import theme from "../theme";
 
 function MyApp({ Component, pageProps }) {

@@ -8,17 +8,19 @@
     "start": "next start"
   },
   "dependencies": {
-    "@chakra-ui/core": "^1.0.0-rc.8",
-    "@chakra-ui/icons": "^1.0.0-rc.5",
-    "framer-motion": "^2.9.4",
-    "i": "^0.3.6",
+    "@chakra-ui/icons": "^1.0.3",
+    "@chakra-ui/react": "^1.1.4",
+    "@emotion/react": "^11.1.4",
+    "@emotion/styled": "^11.0.0",
+    "date-fns": "^2.16.1",
+    "framer-motion": "^3.2.1",
     "keen-slider": "^5.2.4",
-    "next": "^10.0.0",
+    "next": "^10.0.5",
     "npm": "^6.14.8",
     "prismic-javascript": "^3.0.2",
     "prismic-reactjs": "^1.3.3",
-    "react": "16.14.0",
-    "react-dom": "16.14.0"
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
   },
   "devDependencies": {
     "eslint": "^7.12.1",

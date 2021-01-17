@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import "keen-slider/keen-slider.min.css";
 import { useKeenSlider } from "keen-slider/react";
-import { Box, useBreakpointValue } from "@chakra-ui/core";
+import { Box, useBreakpointValue } from "@chakra-ui/react";
 import Image from "next/image";
 import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
 
 const Slider = ({ photos = [], ...props }) => {
   const [, setCurrentSlide] = useState(0);
   const variant = useBreakpointValue({ base: 800, md: 600 });
-  // const photos = ["/back1.jpg", "/back2.jpg", "/back3.jpg"];
 
   const [sliderRef, slider] = useKeenSlider({
     initial: 0,
@@ -37,7 +36,6 @@ const Slider = ({ photos = [], ...props }) => {
               className="simage"
               quality="100"
               alt={"Slider Image - " + index}
-              // for performance
               priority={true}
             />
           </Box>

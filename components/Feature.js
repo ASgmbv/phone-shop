@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from "react";
 import Image from "next/image";
-import { Heading, Text, Stack } from "@chakra-ui/core";
+import { Heading, Text, Stack } from "@chakra-ui/react";
 
 const Feature = ({ image, title, description, ...props }) => {
   return (
