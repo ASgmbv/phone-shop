@@ -16,9 +16,9 @@ export async function queryPostByUid({ postUid }) {
   const post = (await Client().getByUID("blog_post", postUid)) || {};
 
   return {
-    title: post?.data.title || [],
-    body: post?.data.body || [],
-    slug: post?.uid || "",
+    title: post.data?.title || [],
+    body: post.data?.body || [],
+    slug: post.uid || "",
     lastPublicationDate: post?.last_publication_date || "",
   };
 }
