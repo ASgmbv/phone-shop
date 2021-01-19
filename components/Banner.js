@@ -29,7 +29,7 @@ const Banner = ({ mainPage = {} }) => {
           mb={[10, null, null, null, 0]}
         >
           <Heading
-            fontSize={["2xl", null, "5xl"]}
+            fontSize={["3xl", null, "5xl"]}
             color="gray.700"
             maxW="520px"
             mb={4}

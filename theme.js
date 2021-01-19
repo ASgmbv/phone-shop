@@ -9,7 +9,7 @@ const customTheme = extendTheme({
     global: (props) => ({
       body: {
         fontFamily: "Inter, sans-serif",
-        backgroundColor: "#F2F2F2",
+        // backgroundColor: "#F2F2F2",
       },
       ".simage": {
         objectFit: "cover",

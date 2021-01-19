@@ -1,55 +1,62 @@
 /* eslint-disable react/prop-types */
-import {
-  Grid,
-  Container,
-  Text,
-  Img,
-  Flex,
-  Heading,
-  Link,
-} from "@chakra-ui/react";
+import { Grid, Container, Text, Img, Flex, Divider } from "@chakra-ui/react";
 import React from "react";
-import { ChevronRightIcon } from "@chakra-ui/icons";
 import NextLink from "next/link";
 
 const PhonesList = ({ phones }) => {
   return (
-    <Container maxW="7xl" bg="white">
+    <Container maxW="7xl" bg="white" mb="100px">
+      <Flex my={["30px", null, "50px"]} alignItems="center">
+        <Divider />
+        <Text
+          mx="4"
+          whiteSpace="nowrap"
+          fontSize={["lg", null, "2xl"]}
+          color="gray.600"
+        >
+          STAR PRODUCTS
+        </Text>
+        <Divider />
+      </Flex>
       <Grid
         templateColumns={["repeat(2, 1fr)", null, null, null, "repeat(4, 1fr)"]}
-        py={["50px"]}
-        mb="50px"
-        gap="4"
+        gap="1"
       >
-        {phones.map(({ name, price, image, slug }) => {
+        {phones.map(({ name, price, image, slug }, index) => {
           return (
-            <Flex
-              flexDirection="column"
-              justifyContent="center"
-              alignItems="center"
-              p="4"
-              key={name}
-            >
-              <Img
-                src={image}
-                alt={name}
-                width={["100%", null, "70%"]}
-                height={["250px", null, "250px"]}
-                objectFit="contain"
-                mb="2"
-              />
-              <Heading size="md" mb="2">
-                {name}
-              </Heading>
-              <Text as="span" fontWeight="600" mb="2">
-                {price}
-              </Text>
-              <NextLink href={`/phones/${slug}`} passHref>
-                <Link color="blue.500">
-                  detaylar <ChevronRightIcon />{" "}
-                </Link>
-              </NextLink>
-            </Flex>
+            <NextLink key={name} href={`/phones/${slug}`} passHref>
+              <a>
+                <Flex
+                  flexDirection="column"
+                  justifyContent="center"
+                  p="2"
+                  border="1px solid"
+                  borderColor="gray.200"
+                  bg="gray.50"
+                  _hover={{
+                    bg: "gray.50",
+                  }}
+                >
+                  <Text fontSize={["md", null, "xl"]}>{name}</Text>
+                  <Text
+                    as="span"
+                    fontSize={["sm", null, "md"]}
+                    mb="3"
+                    color="gray.600"
+                  >
+                    {price}
+                  </Text>
+
+                  <Img
+                    src={image}
+                    alt={name}
+                    height={["100px", null, "200px"]}
+                    objectFit="contain"
+                    mb="2"
+                  />
+                </Flex>
+              </a>
+            </NextLink>
           );
         })}
       </Grid>
