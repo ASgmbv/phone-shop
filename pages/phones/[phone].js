@@ -55,17 +55,17 @@ const PhonePage = ({ phone = {} }) => {
           <Img
             src={image}
             alt={name}
-            width={["80%", null, null, null, "40%"]}
+            width={["100%", null, null, null, "40%"]}
             objectFit="contain"
-            height="500px"
+            height={["200px", null, "500px"]}
             mx={[0, null, null, null, 10]}
             mb={[10, null, null, null, 10]}
           />
           <Flex alignSelf="flex-start" p="1" flex="1" flexDirection="column">
-            <Heading fontSize={["4xl"]} mb="5">
+            <Heading fontSize={["2xl", null, "4xl"]} mb="2">
               {name}
             </Heading>
-            <Text mb="5" fontSize="xl" fontWeight="bold" color="orange.400">
+            <Text mb="5" fontSize="lg" fontWeight="bold" color="orange.400">
               {price}
             </Text>
             {/* <Box

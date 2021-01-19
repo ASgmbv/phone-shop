@@ -16,9 +16,9 @@ const customTheme = extendTheme({
       },
       ".blog-content": {
         p: {
-          fontSize: "lg",
-          lineHeight: "taller",
-          mb: "3",
+          fontSize: "md",
+          lineHeight: "tall",
+          mb: "4",
         },
         h1: {
           mt: "2rem",
