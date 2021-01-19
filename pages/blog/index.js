@@ -7,6 +7,7 @@ import {
   Box,
   Link,
   Text,
+  Divider,
 } from "@chakra-ui/react";
 import React from "react";
 import { RichText } from "prismic-reactjs";
@@ -37,9 +38,12 @@ const Blog = ({ posts = [] }) => {
           </Heading>
           <List>
             {posts.map((post, index) => (
-              <ListItem mb={[4, null, 8]} key={"blog-post-" + index}>
-                <BlogPost post={post} />
-              </ListItem>
+              <>
+                <ListItem key={"blog-post-" + index}>
+                  <BlogPost post={post} />
+                </ListItem>
+                <Divider my="10" />
+              </>
             ))}
           </List>
         </Container>
@@ -55,7 +59,7 @@ const BlogPost = ({ post }) => {
     <Box>
       <NextLink href={`/blog/${post.slug}`} passHref>
         <Link>
-          <Heading mb="2" size="lg">
+          <Heading mb="2" fontSize={["lg", null, "xl"]}>
             {title}
           </Heading>
         </Link>
@@ -82,7 +86,7 @@ const BlogFirstParagraph = ({ sliceZone, textLimit = 200 }) => {
     }
 
     return (
-      <Text fontSize="lg" lineHeight="taller">
+      <Text fontSize="md" lineHeight="tall">
         {limitedText}
       </Text>
     );

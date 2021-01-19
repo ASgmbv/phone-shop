@@ -29,16 +29,24 @@ const Banner = ({ mainPage = {} }) => {
           mb={[10, null, null, null, 0]}
         >
           <Heading
-            fontSize={["2xl", null, "4xl"]}
-            fontWeight="600"
+            fontSize={["2xl", null, "5xl"]}
+            color="gray.700"
             maxW="520px"
-            mb={3}
+            mb={4}
           >
             {mainPage.bannerTitle}
           </Heading>
-          <Text maxW="500px" lineHeight="tall" fontSize={["md", null, "lg"]}>
+
+          <Text
+            maxW="500px"
+            lineHeight="tall"
+            mb={4}
+            fontSize={["md", null, "lg"]}
+            color="gray.500"
+          >
             {mainPage.bannerDescription}
           </Text>
+
           <NextLink href={mainPage.bannerLink || ""} passHref>
             <Link
               maxW="500px"
