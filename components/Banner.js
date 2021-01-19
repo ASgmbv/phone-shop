@@ -10,7 +10,7 @@ const Banner = ({ mainPage = {} }) => {
     <Container maxW="7xl" bg="white" my={[4, null, 8]}>
       <Flex
         gap="4"
-        py={["50px", null, null, null, "100px"]}
+        py={["30px", null, null, null, "80px"]}
         flexDirection={["column-reverse", null, null, null, "row"]}
       >
         <Box
@@ -28,15 +28,24 @@ const Banner = ({ mainPage = {} }) => {
           px={[0, null, null, null, 10]}
           mb={[10, null, null, null, 0]}
         >
-          <Heading size="2xl" fontWeight="600" maxW="500px" mb="6">
+          <Heading
+            fontSize={["2xl", null, "4xl"]}
+            fontWeight="600"
+            maxW="520px"
+            mb={3}
+          >
             {mainPage.bannerTitle}
           </Heading>
-          <Text maxW="500px" lineHeight="tall" mb="6" fontSize={["lg"]}>
+          <Text maxW="500px" lineHeight="tall" fontSize={["md", null, "lg"]}>
             {mainPage.bannerDescription}
           </Text>
           <NextLink href={mainPage.bannerLink || ""} passHref>
-            <Link maxW="500px" color="facebook.400" fontSize="xl">
-              devam et...
+            <Link
+              maxW="500px"
+              color="facebook.400"
+              fontSize={["md", null, "lg"]}
+            >
+              detaylar
             </Link>
           </NextLink>
         </Flex>

@@ -33,11 +33,11 @@ const Header = (props) => {
     >
       <Flex bg="gray.500" color="white">
         <Container maxW="4xl" py="1">
-          <Flex justifyContent="space-between">
+          <Flex justifyContent="space-between" alignItems="center">
             <Flex as="nav" alignItems="center" flexDirection={["row"]}>
-              <PhoneIcon boxSize="4" mr="2" />
-              <Icon as={FaWhatsapp} boxSize="4" mr="2" />
-              <Icon as={FaTelegram} boxSize="4" mr="2" />
+              <PhoneIcon boxSize={[3, null, 4]} mr={[1, null, 2]} />
+              <Icon as={FaWhatsapp} boxSize={[3, null, 4]} mr={[1, null, 2]} />
+              <Icon as={FaTelegram} boxSize={[3, null, 4]} mr={[1, null, 2]} />
               <Link href="tel:+905525164080" isExternal fontSize="xs">
                 +90 552 516 4080
               </Link>
@@ -49,7 +49,7 @@ const Header = (props) => {
               isExternal
               href="https://mobile.donanimhaber.com/profil/2549127"
             >
-              <Img src="/dhw.png" height="4" />
+              <Img src="/dhw.png" height={[3, null, 4]} />
             </Link>
           </Flex>
         </Container>
