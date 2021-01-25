@@ -49,23 +49,23 @@ const PhonePage = ({ phone = {} }) => {
       <Header />
       <AnimatePresence>
         <Container maxW="7xl" bg="white" my={[4, null, 8]}>
-          <MotionBox
-            display="flex"
-            layoutId={slug}
+          <Flex
             py={["50px"]}
             flexDirection={["column", null, null, null, "row"]}
             alignItems={["center", null, null, null, "flex-start"]}
             overflow="hidden"
           >
-            <Img
-              src={image}
-              alt={name}
-              width={["100%", null, null, null, "40%"]}
-              objectFit="contain"
-              height={["200px", null, "500px"]}
-              mx={[0, null, null, null, 10]}
-              mb={[10, null, null, null, 10]}
-            />
+            <MotionBox layoutId={slug}>
+              <Img
+                src={image}
+                alt={name}
+                width={["100%", null, null, null, "40%"]}
+                objectFit="contain"
+                height={["200px", null, "500px"]}
+                mx={[0, null, null, null, 10]}
+                mb={[10, null, null, null, 10]}
+              />
+            </MotionBox>
             <Flex alignSelf="flex-start" p="1" flex="1" flexDirection="column">
               <Heading fontSize={["2xl", null, "4xl"]} mb="2">
                 {name}
@@ -84,7 +84,7 @@ const PhonePage = ({ phone = {} }) => {
                 </Button>
               </NextLink>
             </Flex>
-          </MotionBox>
+          </Flex>
         </Container>
       </AnimatePresence>
     </>
