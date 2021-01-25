@@ -2,6 +2,7 @@
 import { Grid, Container, Text, Img, Flex, Divider } from "@chakra-ui/react";
 import React from "react";
 import NextLink from "next/link";
+import MotionBox from "./MotionBox";
 
 const PhonesList = ({ phones }) => {
   return (
@@ -26,7 +27,13 @@ const PhonesList = ({ phones }) => {
           return (
             <NextLink key={name} href={`/phones/${slug}`} passHref>
               <a>
-                <Flex
+                <MotionBox
+                  // framer-motion
+                  // animate={{ rotate: 360 }}
+                  // transition={{ duration: 5 }}
+                  layoutId={slug}
+                  // -----
+                  display="flex"
                   flexDirection="column"
                   justifyContent="center"
                   p="2"
@@ -54,7 +61,7 @@ const PhonesList = ({ phones }) => {
                     objectFit="contain"
                     mb="2"
                   />
-                </Flex>
+                </MotionBox>
               </a>
             </NextLink>
           );
