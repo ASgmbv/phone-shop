@@ -1,18 +1,17 @@
 /* eslint-disable react/prop-types */
 import {
-  Flex,
   Img,
   Container,
   Text,
   Heading,
   Button,
   Box,
+  Grid,
 } from "@chakra-ui/react";
 import React from "react";
 import Header from "../../components/Header";
 import { queryPhones, queryPhoneByUid } from "../../utils/prismicQueries";
 import { RichText } from "prismic-reactjs";
-import NextLink from "next/link";
 import MotionBox from "../../components/MotionBox";
 import { AnimatePresence } from "framer-motion";
 
@@ -49,22 +48,27 @@ const PhonePage = ({ phone = {} }) => {
       <Header />
       <AnimatePresence>
         <Container maxW="7xl" bg="white" my={[4, null, 8]}>
-          <Flex
-            py={["50px"]}
-            flexDirection={["column", null, null, null, "row"]}
-            alignItems={["center", null, null, null, "flex-start"]}
+          <Grid
+            py="50px"
             overflow="hidden"
+            templateColumns={[
+              "repeat(1, 1fr)",
+              null,
+              null,
+              null,
+              "repeat(2, 1fr)",
+            ]}
           >
-            <MotionBox
-              layoutId={slug}
-              width={["100%", null, null, null, "40%"]}
-              mx={[0, null, null, null, 10]}
-              mb={[10, null, null, null, 10]}
-              height={["200px", null, "500px"]}
-            >
-              <Img src={image} alt={name} objectFit="contain" />
+            <MotionBox layoutId={slug} p="10">
+              <Img
+                src={image}
+                alt={name}
+                objectFit="contain"
+                height={["200px", null, "500px"]}
+                mx="auto"
+              />
             </MotionBox>
-            <Flex alignSelf="flex-start" p="1" flex="1" flexDirection="column">
+            <Box>
               <Heading fontSize={["2xl", null, "4xl"]} mb="2">
                 {name}
               </Heading>
@@ -72,17 +76,18 @@ const PhonePage = ({ phone = {} }) => {
                 {price}
               </Text>
               <Box className="blog-content">{RichText.render(description)}</Box>
-              {/* </Box> */}
-              <NextLink
+              <Button
+                as="a"
+                alignSelf="flex-start"
+                target="_blank"
+                rel="noopener noreferrer"
+                colorScheme="blue"
                 href={`https://api.whatsapp.com/send?phone=905525164080&text=${name} telefonu sipariş vermek istiyorum.`}
-                passHref
               >
-                <Button as="a" alignSelf="flex-start" colorScheme="blue">
-                  Sipariş Ver
-                </Button>
-              </NextLink>
-            </Flex>
-          </Flex>
+                Sipariş Ver
+              </Button>
+            </Box>
+          </Grid>
         </Container>
       </AnimatePresence>
     </>
