@@ -9,7 +9,7 @@ import {
   Grid,
 } from "@chakra-ui/react";
 import React from "react";
-import Header from "../../components/Header";
+import Header from "@/components/Header";
 import { queryPhones, queryPhoneByUid } from "../../utils/prismicQueries";
 import { RichText } from "prismic-reactjs";
 import MotionBox from "../../components/MotionBox";
