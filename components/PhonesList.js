@@ -27,13 +27,7 @@ const PhonesList = ({ phones }) => {
           return (
             <NextLink key={name} href={`/phones/${slug}`} passHref>
               <a>
-                <MotionBox
-                  // framer-motion
-                  // animate={{ rotate: 360 }}
-                  // transition={{ duration: 5 }}
-                  layoutId={slug}
-                  // -----
-                  display="flex"
+                <Flex
                   flexDirection="column"
                   justifyContent="center"
                   p="2"
@@ -53,15 +47,16 @@ const PhonesList = ({ phones }) => {
                   >
                     {price}
                   </Text>
-
-                  <Img
-                    src={image}
-                    alt={name}
-                    height={["100px", null, "200px"]}
-                    objectFit="contain"
-                    mb="2"
-                  />
-                </MotionBox>
+                  <MotionBox alignSelf="center" layoutId={slug}>
+                    <Img
+                      src={image}
+                      alt={name}
+                      height={["100px", null, "200px"]}
+                      objectFit="contain"
+                      mb="2"
+                    />
+                  </MotionBox>
+                </Flex>
               </a>
             </NextLink>
           );

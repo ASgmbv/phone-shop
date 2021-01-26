@@ -47,8 +47,6 @@ const PhoneItem = ({
 }) => {
   const [show, setShow] = useState(false);
 
-  console.log({ show });
-
   return (
     <Box
       py="10"

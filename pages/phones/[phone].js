@@ -55,16 +55,14 @@ const PhonePage = ({ phone = {} }) => {
             alignItems={["center", null, null, null, "flex-start"]}
             overflow="hidden"
           >
-            <MotionBox layoutId={slug}>
-              <Img
-                src={image}
-                alt={name}
-                width={["100%", null, null, null, "40%"]}
-                objectFit="contain"
-                height={["200px", null, "500px"]}
-                mx={[0, null, null, null, 10]}
-                mb={[10, null, null, null, 10]}
-              />
+            <MotionBox
+              layoutId={slug}
+              width={["100%", null, null, null, "40%"]}
+              mx={[0, null, null, null, 10]}
+              mb={[10, null, null, null, 10]}
+              height={["200px", null, "500px"]}
+            >
+              <Img src={image} alt={name} objectFit="contain" />
             </MotionBox>
             <Flex alignSelf="flex-start" p="1" flex="1" flexDirection="column">
               <Heading fontSize={["2xl", null, "4xl"]} mb="2">
