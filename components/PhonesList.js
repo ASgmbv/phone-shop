@@ -47,15 +47,13 @@ const PhonesList = ({ phones }) => {
                   >
                     {price}
                   </Text>
-                  <MotionBox alignSelf="center" layoutId={slug}>
-                    <Img
-                      src={image}
-                      alt={name}
-                      height={["100px", null, "200px"]}
-                      objectFit="contain"
-                      mb="2"
-                    />
-                  </MotionBox>
+                  <Img
+                    src={image}
+                    alt={name}
+                    height={["100px", null, "200px"]}
+                    objectFit="contain"
+                    mb="2"
+                  />
                 </Flex>
               </a>
             </NextLink>
