@@ -7,6 +7,10 @@ import MotionBox from "./MotionBox";
 const PhonesList = ({ phones }) => {
   return (
     <Container maxW="7xl" bg="white" mb="100px">
+      <Text>
+        Ankara/Kızılay'dan elden teslim diğer illere havale sonrası kargo. 0537
+        275 41 95, 0552 516 40 80
+      </Text>
       <Flex my={["30px", null, "50px"]} alignItems="center">
         <Divider />
         <Text
@@ -20,8 +24,14 @@ const PhonesList = ({ phones }) => {
         <Divider />
       </Flex>
       <Grid
-        templateColumns={["repeat(2, 1fr)", null, null, null, "repeat(4, 1fr)"]}
-        gap="1"
+        templateColumns={[
+          "repeat(1, 1fr)",
+          "repeat(2, 1fr)",
+          "repeat(3, 1fr)",
+          null,
+          "repeat(4, 1fr)",
+        ]}
+        gap="3"
       >
         {phones.map(({ name, price, image, slug }, index) => {
           return (
@@ -29,8 +39,9 @@ const PhonesList = ({ phones }) => {
               <a>
                 <Flex
                   flexDirection="column"
-                  justifyContent="center"
+                  justifyContent="space-between"
                   p="2"
+                  h="full"
                   border="1px solid"
                   borderColor="gray.200"
                   bg="gray.50"
@@ -50,7 +61,7 @@ const PhonesList = ({ phones }) => {
                   <Img
                     src={image}
                     alt={name}
-                    height={["100px", null, "200px"]}
+                    height={["150px", null, "200px"]}
                     objectFit="contain"
                     mb="2"
                   />

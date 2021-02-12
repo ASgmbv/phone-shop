@@ -3,7 +3,7 @@ import Prismic from "prismic-javascript";
 
 export async function queryMainPage() {
   const mainPage = await Client().getSingle("main_page");
-  // console.dir({ mainPage }, { depth: null });
+
   return {
     bannerTitle: mainPage.data.banner_title,
     bannerDescription: mainPage.data.banner_description,
@@ -60,10 +60,15 @@ export async function queryPhones() {
   let response;
   let phones = [];
 
+  let page = 1;
+
   do {
     response = await Client().query(
-      Prismic.Predicates.at("document.type", "phone")
+      Prismic.Predicates.at("document.type", "phone"),
+      { page }
     );
+
+    console.log("loaded page " + page);
 
     response.results.map((phone) => {
       const data = phone.data || {};
@@ -76,6 +81,8 @@ export async function queryPhones() {
         slug: phone.uid || "",
       });
     });
+
+    page++;
   } while (response.next_page);
 
   return phones;

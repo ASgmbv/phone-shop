@@ -77,14 +77,15 @@ const PhonePage = ({ phone = {} }) => {
               </Text>
               <Box className="blog-content">{RichText.render(description)}</Box>
               <Button
+                mt="6"
                 as="a"
                 alignSelf="flex-start"
                 target="_blank"
                 rel="noopener noreferrer"
                 colorScheme="blue"
-                href={`https://api.whatsapp.com/send?phone=905525164080&text=${name} telefonu sipariş vermek istiyorum.`}
+                href={`https://api.whatsapp.com/send?phone=905525164080&text=${name} telefonunun güncel fiyat ve stok durumunu öğrenmek istiyorum`}
               >
-                Sipariş Ver
+                güncel fiyat ve stok durumu
               </Button>
             </Box>
           </Grid>

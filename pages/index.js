@@ -6,14 +6,13 @@ import Banner from "../components/Banner";
 import { queryPhones, queryMainPage } from "../utils/prismicQueries";
 
 export async function getStaticProps() {
-  const phones = await queryPhones();
-
   const mainPage = await queryMainPage();
+  const phones = await queryPhones();
 
   return {
     props: {
-      phones,
       mainPage,
+      phones,
     },
     revalidate: 1,
   };
