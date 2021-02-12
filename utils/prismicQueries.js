@@ -12,6 +12,15 @@ export async function queryMainPage() {
   };
 }
 
+export async function queryBannerPage() {
+  const mainPage = await Client().getSingle("banner");
+
+  return {
+    description: mainPage.data.description,
+    image: mainPage.data.image?.url,
+  };
+}
+
 export async function queryPostByUid({ postUid }) {
   const post = (await Client().getByUID("blog_post", postUid)) || {};
 

@@ -1,5 +1,13 @@
 /* eslint-disable react/prop-types */
-import { Box, Container, Flex, Heading, Text, Link } from "@chakra-ui/react";
+import {
+  Box,
+  Container,
+  Flex,
+  Heading,
+  Text,
+  Link,
+  Button,
+} from "@chakra-ui/react";
 import React from "react";
 import NextLink from "next/link";
 
@@ -47,15 +55,19 @@ const Banner = ({ mainPage = {} }) => {
             {mainPage.bannerDescription}
           </Text>
 
-          <NextLink href={mainPage.bannerLink || ""} passHref>
-            <Link
-              maxW="500px"
-              color="facebook.400"
-              fontSize={["md", null, "lg"]}
-            >
-              detaylar
-            </Link>
-          </NextLink>
+          <Flex alignItems="center">
+            <NextLink href={mainPage.bannerLink || ""} passHref>
+              <Button mx="2" colorScheme="blue" variant="outline">
+                detaylar
+              </Button>
+            </NextLink>
+
+            <NextLink href={"/banner"} passHref>
+              <Button colorScheme="blue" mx="2">
+                Fiyat liste
+              </Button>
+            </NextLink>
+          </Flex>
         </Flex>
       </Flex>
     </Container>
